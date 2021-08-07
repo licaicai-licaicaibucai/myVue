@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue的入门</title>
+    <script src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+    <!--
+        提醒: idea中的JavaScript的版本一定要是ECMAScript6及以上的版本
+        vue的使用步骤:
+        1. 准备一个vue的容器(div),并且指定id，我们需要使用vue的所有标签都放在这个div中
+        2. 在vue的容器外面(下面)编写script标签，script标签里面就编写vue的代码
+        3. vue的具体代码如下
+    -->
+    <div id="app">
+        <!--使用插值表达式进行数据的绑定-->
+        <div id="msg">{{message}}</div>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el:"#app",
+            data:{//这里面就是所有的数据模型
+                message:"hello world"
+            }
+        });
+    </script>
+</body>
+</html>

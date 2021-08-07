@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>使用v-for进行遍历绑定数据</title>
+    <script src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--城市列表-->
+        <ul>
+            <li v-for="(cityName,i) in cityList" v-bind:value="i" v-html="cityName"></li>
+        </ul>
+
+        <!--
+            遍历展示联系人信息
+        -->
+        <table width="600px" border="1" cellspacing="0" align="center">
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>地址</th>
+                <th>qq</th>
+            </tr>
+            <tr v-for="(linkman,index) in linkmanList">
+                <td v-text="linkman.id"></td>
+                <td v-text="linkman.name"></td>
+                <td v-text="linkman.address"></td>
+                <td v-text="linkman.qq"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var vue = new Vue({
+           el:"#app",
+           data:{
+               cityList:["北京","上海","深圳","广州","长沙"],
+               linkmanList:[]
+           },
+           methods:{
+               findAll(){
+                   //发送异步请求获取到所有联系人的信息
+                   this.linkmanList = [{
+                       id:2,
+                       name:"李四",
+                       address:"广州",
+                       qq:"87654321"
+                   },{
+                       id:1,
+                       name:"张三",
+                       address:"深圳",
+                       qq:"12345678"
+                   },{
+                       id:3,
+                       name:"王五",
+                       address:"北京",
+                       qq:"66666666"
+                   },{
+                       id:4,
+                       name:"赵六",
+                       address:"上海",
+                       qq:"88888888"
+                   }]
+               }
+           }
+        });
+    </script>
+
+</body>
+</html>

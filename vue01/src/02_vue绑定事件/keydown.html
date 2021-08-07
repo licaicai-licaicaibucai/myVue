@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定键盘按下事件</title>
+    <script src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            $event 表示当前事件
+        -->
+        <input type="text" @keydown="fn1($event)">
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+                fn1(e){
+                    //当输入框输入的值是0-9的话，则可以输入，如果输入的值不是0-9则阻止输入
+                    //1. 通过当前事件，获取建码值
+                    var keyCode = e.keyCode;
+                    //2. 判断建码值，如果keyCode不是8 (删除键)
+                    if(keyCode != 8){
+                        // 如果不在48到57之间，就阻止这次事件
+                        if (keyCode < 48 || keyCode > 57) {
+                            //阻止事件
+                            e.preventDefault()
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

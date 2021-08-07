@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model绑定表单项的value</title>
+    <script src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+    <div id="app">
+        <form>
+            用户名<input type="text" name="username" v-model="user.username"><br>
+            密码<input type="text" name="password" v-model="user.password"><br>
+            昵称<input type="text" name="nickname" v-model="user.nickname"><br>
+            地址<input type="text" name="address" v-model="user.address"><br>
+
+            <input type="button" value="获取表单的数据" @click="obtainFormData()"><br>
+            <input type="button" value="回显表单数据" @click="setFormData()">
+        </form>
+
+    </div>
+
+    <script>
+        var vue = new Vue({
+           el:"#app",
+           data:{
+               user:{}
+           },
+            methods:{
+               obtainFormData(){
+                    //获取表单数据，其实就是获取user
+                   //获取某个视图的数据，只需要获取与该视图绑定数据模型的数据即可
+                    console.log("获取到的表单数据的nickname为:"+this.user.nickname)
+                    console.log("获取到的表单数据的address为:"+this.user.address)
+               },
+               setFormData(){
+                   //设置表单数据
+                   //要设置某个视图的内容，只需要设置与该视图绑定的数据模型即可
+                   var userInfo = {
+                       username:"aobama",
+                       password:"123456",
+                       nickname:"圣枪游侠",
+                       address:"召唤师峡谷"
+                   }
+
+                   this.user = userInfo
+               }
+            }
+        });
+    </script>
+</body>
+</html>

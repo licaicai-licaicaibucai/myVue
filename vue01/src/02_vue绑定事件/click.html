@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue绑定事件</title>
+    <script src="../js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="msg">{{content}}</div>
+
+        <!--vue的方式绑定点击事件-->
+        <input type="button" value="改变" @click="fn1">
+    </div>
+    <script>
+        var vue = new Vue({
+           el:"#app",
+           data:{//vue的数据模型
+               content:"你好世界"
+           },
+           methods:{
+               fn1(){
+                   this.content = "hello world"
+               }
+           }
+        });
+    </script>
+</body>
+</html>

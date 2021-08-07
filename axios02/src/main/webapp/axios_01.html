@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用axios发送异步请求</title>
+    <script src="js/axios-0.18.0.js"></script>
+    <script src="js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            目标:当页面加载的时候，发送异步请求给ServletDemo01，
+            获取响应数据，展示到id为msg的div中
+        -->
+        <div id="msg" v-text="message"></div>
+    </div>
+    <script>
+        var vue = new Vue({
+           el:"#app",
+           data:{
+               message:""
+           },
+            created(){
+                //使用axios发送异步请求,异步的get请求可以通过url地址携带数据
+                /*axios.get("/demo01?id=12&username=jay").then(response =>{
+                    //response就是服务器端的响应, response.data才是我们想要获取的响应体的数据
+                    console.log(response.data)
+                    this.message = response.data
+                })*/
+
+                //异步的get请求，还能通过json格式携带数据
+                /*axios.get("/demo01",{
+                    params:{
+                        id:12,
+                        username:"jay"
+                    }
+                }).then(response=>{
+                    //拿到响应体的数据赋值给message
+                    this.message = response.data
+                })*/
+
+                //axios发送异步的post请求，并且携带请求参数,post方式也可在url后面携带请求参数
+                /*axios.post("/demo01?id=13&username=aobama").then(response=>{
+                    //拿到响应体的数据赋值给message
+                    this.message = response.data
+                })*/
+
+                //axios发送异步的post请求，使用json格式携带请求参数
+                axios.post("/demo01",{id:14,username:"jay"}).then(response=>{
+                    //拿到响应体的数据赋值给message
+                    this.message = response.data
+                }).catch(error=>{
+                    console.log(error)
+                    //在这里就处理请求失败的情况
+                    this.message = "服务器异常"
+                })
+            }
+        });
+    </script>
+</body>
+</html>
